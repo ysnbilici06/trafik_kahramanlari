@@ -1,7 +1,7 @@
 name: Web sürümünü yayımla
 
 # Uygulamayı GitHub Pages'e koyar. Derleme adımı yok; dosyalar olduğu gibi yayımlanır.
-# Adres: https://ysnbilici06.github.io/trafik-kahramanlari/
+# Adres: https://ysnbilici06.github.io/trafik_kahramanlari/
 on:
   push:
     branches: [main]
