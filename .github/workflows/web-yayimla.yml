@@ -19,12 +19,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  yayimla:
+  hazirla:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    environment:
-      name: github-pages
-      url: ${{ steps.yayin.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -37,5 +34,13 @@ jobs:
         with:
           path: _site
 
+  # Ayrı iş: aynı işte yükleme biter bitmez yayımlanınca paket henüz bulunamıyordu.
+  yayimla:
+    needs: hazirla
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.yayin.outputs.page_url }}
+    steps:
       - id: yayin
         uses: actions/deploy-pages@v4
